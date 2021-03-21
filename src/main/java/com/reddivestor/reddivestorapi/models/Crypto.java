@@ -11,5 +11,5 @@ public class Crypto {
     final String post;
     final String name;
     final String subReddit;
-    final Date timeStamp;
+    final Date timestamp;
 }
