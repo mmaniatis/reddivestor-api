@@ -2,6 +2,7 @@ package com.reddivestor.reddivestorapi.service;
 
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.persist.ReadWriteDatastore;
+import com.reddivestor.reddivestorapi.persist.mongo.MongoReadWriteDatastore;
 import com.reddivestor.reddivestorapi.service.cryptocounts.CryptoCountsService;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
@@ -19,7 +20,7 @@ import static org.mockito.Mockito.mock;
 
 public class TestCryptoCountsService {
 
-    ReadWriteDatastore<Crypto> mockReadWriteDatastore;
+    ReadWriteDatastore mockReadWriteDatastore;
     CryptoCountsService cryptoCountsService;
 
     @Before
@@ -55,11 +56,11 @@ public class TestCryptoCountsService {
                         dateThree)
                 );
 
-        Mockito.when(mockReadWriteDatastore.findByTimestampBetween(any(ZonedDateTime.class), any(ZonedDateTime.class)))
+        Mockito.when(mockReadWriteDatastore.findByTimestampBetween(any(Date.class), any(Date.class)))
                 .thenReturn(mockCryptoList);
         try {
             assertTrue(cryptoCountsService.getByTimeBucket(
-                    ZonedDateTime.now().minusDays(6))
+                    LocalDateTime.now().minusDays(6))
                     .equals(mockCryptoList));
         } catch (Exception ex) {
             //Test failed.

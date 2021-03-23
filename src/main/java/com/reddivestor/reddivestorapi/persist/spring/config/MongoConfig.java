@@ -4,6 +4,8 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import com.reddivestor.reddivestorapi.models.Crypto;
+import com.reddivestor.reddivestorapi.persist.mongo.MongoReadWriteDatastore;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -41,12 +43,13 @@ public class MongoConfig {
     @Bean
     public MongoTemplate mongoTemplate() {
         MongoTemplate mongoTemplate =  new MongoTemplate(mongoClient(), "main");
-        Set<String> collections = mongoTemplate.getCollectionNames();
-        List<Crypto> cryptoList = mongoTemplate.findAll(Crypto.class, "crypto_counts");
         System.out.println("!! MongoTemplate bean initialized !! ");
-        System.out.println("!! Collections in current env: " + collections.toString() + " !!");
-        System.out.println("!! Size of crypto_counts: " + cryptoList.size()+ " !!");
         return mongoTemplate;
+    }
+
+    @Bean
+    public MongoReadWriteDatastore mongoReadWriteDatastore(@Autowired MongoTemplate mongoTemplate) {
+        return new MongoReadWriteDatastore(mongoTemplate);
     }
 
 }

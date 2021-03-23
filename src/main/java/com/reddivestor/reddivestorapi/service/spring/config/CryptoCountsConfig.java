@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
+
 
 @Configuration
 public class CryptoCountsConfig {
@@ -19,7 +20,7 @@ public class CryptoCountsConfig {
         System.out.println("!! CryptoCountsService bean created !!");
         try {
             System.out.println(String.format("Cryptos in past hour: %s",
-                    cryptoCountsService.getByTimeBucket(ZonedDateTime.now().minusMinutes(59))));
+                    cryptoCountsService.getByTimeBucket(LocalDateTime.now().minusMinutes(59))));
         } catch (Exception ex) {
             System.out.println("Error with CryptoCountsService ..." + ex.toString());
         }
