@@ -2,7 +2,7 @@ package com.reddivestor.reddivestorapi.service;
 
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.persist.ReadWriteDatastore;
-import com.reddivestor.reddivestorapi.service.cryptocounts.CryptoCountsService;
+import com.reddivestor.reddivestorapi.service.cryptocounts.CryptoCountsCRUDService;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.mockito.*;
@@ -16,16 +16,16 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 
-public class TestCryptoCountsService {
+public class TestCryptoCountsCRUDService {
 
     ReadWriteDatastore mockReadWriteDatastore;
-    CryptoCountsService cryptoCountsService;
+    CryptoCountsCRUDService cryptoCountsCRUDService;
 
     @Before
     public void init() {
         //Init the Crypto service with a mock.
         mockReadWriteDatastore = mock(ReadWriteDatastore.class);
-        cryptoCountsService = new CryptoCountsService(mockReadWriteDatastore);
+        cryptoCountsCRUDService = new CryptoCountsCRUDService(mockReadWriteDatastore);
     }
     @Rule
     public ExpectedException EXCEPTION_RULE = ExpectedException.none();
@@ -57,7 +57,7 @@ public class TestCryptoCountsService {
         Mockito.when(mockReadWriteDatastore.findByTimestampBetween(any(Date.class), any(Date.class)))
                 .thenReturn(mockCryptoList);
         try {
-            assertTrue(cryptoCountsService.getByTimeBucket(
+            assertTrue(cryptoCountsCRUDService.getByTimeBucket(
                     LocalDateTime.now().minusDays(6))
                     .equals(mockCryptoList));
         } catch (Exception ex) {
@@ -69,6 +69,6 @@ public class TestCryptoCountsService {
     public void testGetByTimeBucketNullTimeBucket() throws Exception{
         EXCEPTION_RULE.expect(Exception.class);
         EXCEPTION_RULE.expectMessage("timeBucket parameter was null or empty.");
-        cryptoCountsService.getByTimeBucket(null);
+        cryptoCountsCRUDService.getByTimeBucket(null);
     }
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class CryptoCountsService implements CountsService<Crypto> {
+public class CryptoCountsCRUDService implements CountsService<Crypto> {
     final ReadWriteDatastore<Crypto> datastore;
 
     public List<Crypto> getByTimeBucket(LocalDateTime timeBucket) throws Exception{
