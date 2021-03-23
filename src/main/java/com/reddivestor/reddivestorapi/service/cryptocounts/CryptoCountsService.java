@@ -2,7 +2,6 @@ package com.reddivestor.reddivestorapi.service.cryptocounts;
 
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.persist.ReadWriteDatastore;
-import com.reddivestor.reddivestorapi.persist.mongo.MongoReadWriteDatastore;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;

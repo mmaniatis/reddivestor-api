@@ -2,20 +2,13 @@ package com.reddivestor.reddivestorapi.persist.spring.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
-import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.persist.mongo.MongoReadWriteDatastore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
-
-import java.util.List;
-import java.util.Set;
-
 
 @EnableConfigurationProperties
 @Configuration

@@ -2,7 +2,6 @@ package com.reddivestor.reddivestorapi.service;
 
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.persist.ReadWriteDatastore;
-import com.reddivestor.reddivestorapi.persist.mongo.MongoReadWriteDatastore;
 import com.reddivestor.reddivestorapi.service.cryptocounts.CryptoCountsService;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
@@ -11,7 +10,6 @@ import static org.junit.Assert.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
