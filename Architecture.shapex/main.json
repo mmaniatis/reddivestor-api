@@ -1,0 +1,72 @@
+{
+  "shapes" : [
+    {
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{530, 270}\",\n  \"angle\" : 0,\n  \"size\" : \"{250, 120}\",\n  \"identifier\" : \"E0C199F1-52E3-4549-9BE8-CF48E098DB7C\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_4\",\n  \"privateStyle\" : {\n\n  },\n  \"value\" : \"\",\n  \"isRelative\" : false\n}",
+      "class" : "dia-node"
+    },
+    {
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"text\",\n  \"position\" : \"{581, 612}\",\n  \"angle\" : 0,\n  \"size\" : \"{159, 36}\",\n  \"identifier\" : \"4EFF5CF9-DC84-48A8-B7DD-D7C8E247C217\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_11\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#FFFFFFFF\",\n    \"textAlignment\" : 0,\n    \"textVerticalAlignment\" : 1,\n    \"font\" : \"Helvetica,14.0\"\n  },\n  \"value\" : \"Reddivestor DB\",\n  \"isRelative\" : false\n}",
+      "class" : "dia-node"
+    },
+    {
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{130, 290}\",\n  \"angle\" : 0,\n  \"size\" : \"{120.00000000000001, 100}\",\n  \"identifier\" : \"2A392206-EC78-4A11-9827-8B7CB8B1E0AD\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_26\",\n  \"privateStyle\" : {\n\n  },\n  \"value\" : \"\",\n  \"isRelative\" : false\n}",
+      "class" : "dia-node"
+    },
+    {
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{515.65423583984375, 331.21917724609375}\",\n  \"identifier\" : \"64618F05-91DE-4481-BEEC-4A533A5454F5\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0}\"\n  },\n  \"sourcePoint\" : \"{261.5631103515625, 330.35711669921875}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0}\"\n  }\n}",
+      "class" : "connector"
+    },
+    {
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"text\",\n  \"position\" : \"{150, 325}\",\n  \"angle\" : 0,\n  \"size\" : \"{80, 30}\",\n  \"identifier\" : \"46160C1B-1031-449B-A318-891A2E9E0A8F\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_11\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#FFFFFFFF\",\n    \"textAlignment\" : 0,\n    \"textVerticalAlignment\" : 1,\n    \"font\" : \"Helvetica,14.0\"\n  },\n  \"value\" : \"reddivestor crawler\",\n  \"isRelative\" : false\n}",
+      "class" : "dia-node"
+    },
+    {
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{530, 40}\",\n  \"angle\" : 0,\n  \"size\" : \"{240.00000000000003, 110}\",\n  \"identifier\" : \"C4D4226F-EFE6-4DF0-AAD3-D8E96F6A8319\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_4\",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\"\n  },\n  \"value\" : \"Reddivestor API\",\n  \"isRelative\" : false\n}",
+      "class" : "dia-node"
+    },
+    {
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{651.82379150390625, 157.385986328125}\",\n  \"value\" : {\n    \"labels\" : [\n\n    ]\n  },\n  \"identifier\" : \"52CFD883-2C76-4374-BAF9-B3B8779EA5CD\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"connectorMode\" : 2,\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0}\"\n  },\n  \"sourcePoint\" : \"{653.600830078125, 256.26947021484375}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0}\"\n  }\n}",
+      "class" : "connector"
+    },
+    {
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"text\",\n  \"position\" : \"{600, 314}\",\n  \"angle\" : 0,\n  \"size\" : \"{159, 36}\",\n  \"identifier\" : \"E5A6286D-3326-4C31-BAD3-044A28492B26\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_11\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#FFFFFFFF\",\n    \"textAlignment\" : 0,\n    \"textVerticalAlignment\" : 1,\n    \"font\" : \"Helvetica,14.0\"\n  },\n  \"value\" : \"Reddivestor API\",\n  \"isRelative\" : false\n}",
+      "class" : "dia-node"
+    }
+  ],
+  "frame" : [
+    [
+      0,
+      0
+    ],
+    [
+      827,
+      1169
+    ]
+  ],
+  "terminals" : {
+    "64618F05-91DE-4481-BEEC-4A533A5454F5" : [
+      "null",
+      "null"
+    ],
+    "52CFD883-2C76-4374-BAF9-B3B8779EA5CD" : [
+      "null",
+      "null"
+    ]
+  },
+  "design" : {
+    "connectorPathStyle" : "rounded",
+    "themeName" : "slice",
+    "paper" : {
+      "rightMargin" : 20,
+      "bottomMargin" : 20,
+      "topMargin" : 20,
+      "name" : "a4",
+      "leftMargin" : 20,
+      "ori" : true
+    },
+    "autoFrame" : true,
+    "showPageMarker" : true
+  },
+  "showsGrids" : true,
+  "version" : "0.0.2"
+}

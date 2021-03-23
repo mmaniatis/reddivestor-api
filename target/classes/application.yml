@@ -1,0 +1,5 @@
+reddivestorapi:
+  mongodb:
+    username: ${MONGO_USERNAME}
+    password: ${MONGO_PASSWORD}
+    database: main
