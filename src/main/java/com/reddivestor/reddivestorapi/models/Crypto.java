@@ -10,7 +10,7 @@ import java.util.Date;
 public class Crypto {
     final String post;
     final String name;
-    final String subReddit;
+    final String sub_reddit;
     final Date timestamp;
 
 

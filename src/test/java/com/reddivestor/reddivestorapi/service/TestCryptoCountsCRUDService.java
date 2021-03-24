@@ -2,7 +2,7 @@ package com.reddivestor.reddivestorapi.service;
 
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.persist.ReadWriteDatastore;
-import com.reddivestor.reddivestorapi.service.cryptocounts.CryptoCountsCRUDService;
+import com.reddivestor.reddivestorapi.service.cryptocounts.CryptoTimeBucketCRUDService;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.mockito.*;
@@ -19,13 +19,13 @@ import static org.mockito.Mockito.mock;
 public class TestCryptoCountsCRUDService {
 
     ReadWriteDatastore mockReadWriteDatastore;
-    CryptoCountsCRUDService cryptoCountsCRUDService;
+    CryptoTimeBucketCRUDService cryptoCountsCRUDService;
 
     @Before
     public void init() {
         //Init the Crypto service with a mock.
         mockReadWriteDatastore = mock(ReadWriteDatastore.class);
-        cryptoCountsCRUDService = new CryptoCountsCRUDService(mockReadWriteDatastore);
+        cryptoCountsCRUDService = new CryptoTimeBucketCRUDService(mockReadWriteDatastore);
     }
     @Rule
     public ExpectedException EXCEPTION_RULE = ExpectedException.none();
@@ -58,7 +58,7 @@ public class TestCryptoCountsCRUDService {
                 .thenReturn(mockCryptoList);
         try {
             assertTrue(cryptoCountsCRUDService.getByTimeBucket(
-                    LocalDateTime.now().minusDays(6))
+                    LocalDateTime.now().minusDays(6), LocalDateTime.now())
                     .equals(mockCryptoList));
         } catch (Exception ex) {
             //Test failed.
@@ -66,9 +66,16 @@ public class TestCryptoCountsCRUDService {
     }
 
     @Test
-    public void testGetByTimeBucketNullTimeBucket() throws Exception{
+    public void testGetByTimeBucketNullStartTimeBucket() throws Exception{
         EXCEPTION_RULE.expect(Exception.class);
         EXCEPTION_RULE.expectMessage("timeBucket parameter was null or empty.");
-        cryptoCountsCRUDService.getByTimeBucket(null);
+        cryptoCountsCRUDService.getByTimeBucket(null, LocalDateTime.now());
+    }
+
+    @Test
+    public void testGetByTimeBucketNullEndTimeBucket() throws Exception{
+        EXCEPTION_RULE.expect(Exception.class);
+        EXCEPTION_RULE.expectMessage("timeBucket parameter was null or empty.");
+        cryptoCountsCRUDService.getByTimeBucket(LocalDateTime.now().minusDays(5), null);
     }
 }
