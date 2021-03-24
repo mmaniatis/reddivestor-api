@@ -52,7 +52,7 @@ public class TestCryptoCountsController {
         );
         when(mockTimeBucketCRUDService.getByTimeBucket(any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(mockCryptoList);
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
-                .getByTimeRange(LocalDateTime.now().minusDays(1).toString(), LocalDateTime.now().minusDays(5).toString());
+                .getByTimeRangeUTC(LocalDateTime.now().minusDays(1).toString(), LocalDateTime.now().minusDays(5).toString());
 
         assertTrue(cryptoCountsResponse.payload.size() == 3);
         assertTrue(cryptoCountsResponse.httpStatus == HttpStatus.OK);
@@ -80,7 +80,7 @@ public class TestCryptoCountsController {
                         dateThree)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
-                .getByTimeRange("03/2/33333", LocalDateTime.now().minusDays(5).toString());
+                .getByTimeRangeUTC("03/2/33333", LocalDateTime.now().minusDays(5).toString());
 
         assertTrue(cryptoCountsResponse.payload.size() == 0);
         assertTrue(cryptoCountsResponse.httpStatus == HttpStatus.BAD_REQUEST);
@@ -110,7 +110,7 @@ public class TestCryptoCountsController {
                         dateThree)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
-                .getByTimeRange(LocalDateTime.now().minusDays(5).toString(), "03/2/33333");
+                .getByTimeRangeUTC(LocalDateTime.now().minusDays(5).toString(), "03/2/33333");
 
         assertTrue(cryptoCountsResponse.payload.size() == 0);
         assertTrue(cryptoCountsResponse.httpStatus == HttpStatus.BAD_REQUEST);
@@ -140,7 +140,7 @@ public class TestCryptoCountsController {
                         dateThree)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
-                .getByTimeRange(null, LocalDateTime.now().minusDays(5).toString());
+                .getByTimeRangeUTC(null, LocalDateTime.now().minusDays(5).toString());
 
         assertTrue(cryptoCountsResponse.payload.size() == 0);
         assertTrue(cryptoCountsResponse.httpStatus == HttpStatus.BAD_REQUEST);
@@ -168,7 +168,7 @@ public class TestCryptoCountsController {
                         dateThree)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
-                .getByTimeRange(LocalDateTime.now().minusDays(5).toString(), null);
+                .getByTimeRangeUTC(LocalDateTime.now().minusDays(5).toString(), null);
 
         assertTrue(cryptoCountsResponse.payload.size() == 0);
         assertTrue(cryptoCountsResponse.httpStatus == HttpStatus.BAD_REQUEST);

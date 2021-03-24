@@ -16,8 +16,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CryptoCountsController {
     final TimeBucketCRUDService<Crypto> timeBucketCRUDService;
-    @RequestMapping("/cryptocounts/getbytimerange")
-    public CryptoCountsResponse getByTimeRange(String lowerBound, String upperBound) {
+
+    @RequestMapping("/cryptocounts/getbytimerangeutc")
+    //Requests should be in UTC Format. i.e 2021-03-24T01:00:21.000
+    public CryptoCountsResponse getByTimeRangeUTC(String lowerBound, String upperBound) {
         CryptoCountsResponse response = new CryptoCountsResponse();
         try {
             LocalDateTime dateStart = LocalDateTime.parse(lowerBound);
