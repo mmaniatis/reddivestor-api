@@ -50,7 +50,7 @@ public class CryptoCountsController {
 
     @RequestMapping("/cryptocounts/getlasttwelevehours")
     private List<Crypto> getLastTwelveHours() {
-
+        
         return null;
     }
 
