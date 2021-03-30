@@ -5,6 +5,7 @@ import com.reddivestor.reddivestorapi.service.cryptocounts.TimeBucketCRUDService
 import com.reddivestor.reddivestorapi.web.responses.CryptoCountsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin
 public class CryptoCountsController {
     final TimeBucketCRUDService<Crypto> timeBucketCRUDService;
 
