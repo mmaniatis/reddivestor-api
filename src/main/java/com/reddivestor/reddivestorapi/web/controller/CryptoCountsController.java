@@ -1,9 +1,11 @@
 package com.reddivestor.reddivestorapi.web.controller;
 
+import com.google.gson.Gson;
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.service.cryptocounts.TimeBucketCRUDService;
 import com.reddivestor.reddivestorapi.web.responses.CryptoCountsResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,30 +38,27 @@ public class CryptoCountsController {
     }
 
     @RequestMapping("/cryptocounts/getlasthour")
-    public CryptoCountsResponse getLastHour() {
-        CryptoCountsResponse response = new CryptoCountsResponse();
+    @Description("Returns the last hour of coin names sorted by frequency.")
+    public List<String> getLastHour() {
         try {
             LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.HOURS), ZoneOffset.UTC);
             LocalDateTime dateEnd = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
-            response.setPayload(timeBucketCRUDService.getByTimeBucket(dateStart,dateEnd));
-            response.httpStatus = HttpStatus.OK;
-        } catch (Exception ex) {
-            response.exception = ex.toString();
-            response.httpStatus = HttpStatus.BAD_REQUEST;
+            return timeBucketCRUDService.getTopCoinNamesByTimeBucket(dateStart,dateEnd);
+        } catch (Exception e) {
+            return null;
         }
-        return response;
-    }
-
-    @RequestMapping("/cryptocounts/getlasttwelevehours")
-    private List<Crypto> getLastTwelveHours() {
-        
-        return null;
     }
 
     @RequestMapping("/cryptocounts/getlastday")
-    private List<Crypto> getLastDay() {
-
-        return null;
+    @Description("Returns the last day of coin names sorted by frequency.")
+    private List<String> getLastDay() {
+        try {
+            LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.DAYS), ZoneOffset.UTC);
+            LocalDateTime dateEnd = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
+            return timeBucketCRUDService.getTopCoinNamesByTimeBucket(dateStart,dateEnd);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @RequestMapping("/cryptocounts/getlastweek")

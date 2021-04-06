@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TimeBucketCRUDService<O> {
     List<O> getByTimeBucket(LocalDateTime timeBucketStart, LocalDateTime timeBucketEnd) throws Exception;
+    List<String> getTopCoinNamesByTimeBucket(LocalDateTime timeBucketStart, LocalDateTime timeBucketEnd) throws Exception;
 }
