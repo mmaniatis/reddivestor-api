@@ -1,1 +1,2 @@
-com/reddivestor/reddivestorapi/ReddivestorApiApplicationTests.class
+com/reddivestor/reddivestorapi/web/controller/TestCryptoCountsController.class
+com/reddivestor/reddivestorapi/service/TestCryptoCountsCRUDService.class

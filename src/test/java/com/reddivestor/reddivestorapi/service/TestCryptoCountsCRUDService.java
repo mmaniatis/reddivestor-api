@@ -34,27 +34,17 @@ public class TestCryptoCountsCRUDService {
 
     @Test
     public void testGetByTimeBucketHappyPath() {
-        Date in = new Date();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-
-        Date dateOne = Date.from(localDateTime.minusDays(6).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateTwo = Date.from(localDateTime.minusDays(4).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateThree = Date.from(localDateTime.minusDays(3).atZone(ZoneId.systemDefault()).toInstant());
-
         List<Crypto> mockCryptoList = Arrays.asList(
                 new Crypto("blabla crypto",
-                        "blaname",
-                        "blasubreddit",
-                        dateOne),
+                        3,
+                        1),
                 new Crypto("blabla crypto2",
-                        "blaname2",
-                        "blasubreddit2",
-                        dateTwo),
+                        2,
+                        2),
                 new Crypto("blabla crypto3",
-                        "blaname3",
-                        "blasubreddit4",
-                        dateThree)
-                );
+                        1,
+                        3)
+        );
 
         Mockito.when(mockReadWriteDatastore.findByTimestampBetween(any(Date.class), any(Date.class)))
                 .thenReturn(mockCryptoList);
@@ -83,32 +73,21 @@ public class TestCryptoCountsCRUDService {
 
     @Test
     public void testGetTopCoinsByTimeBucket() throws Exception {
-        Date in = new Date();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-
-        Date dateOne = Date.from(localDateTime.minusDays(6).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateTwo = Date.from(localDateTime.minusDays(4).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateThree = Date.from(localDateTime.minusDays(3).atZone(ZoneId.systemDefault()).toInstant());
-
         List<Crypto> mockCryptoList = Arrays.asList(
                 new Crypto("blabla crypto",
-                        "blaname",
-                        "blasubreddit",
-                        dateOne),
+                        3,
+                        1),
                 new Crypto("blabla crypto2",
-                        "blaname2",
-                        "blasubreddit2",
-                        dateTwo),
+                        2,
+                        2),
                 new Crypto("blabla crypto3",
-                        "blaname3",
-                        "blasubreddit4",
-                        dateThree)
+                        1,
+                        3)
         );
-
         Mockito.when(mockReadWriteDatastore.findByTimestampBetween(any(Date.class), any(Date.class)))
                 .thenReturn(mockCryptoList);
         try {
-            List<String> cryptoList = cryptoCountsCRUDService.getTopCoinNamesByTimeBucket(
+            List<Crypto> cryptoList = cryptoCountsCRUDService.getTopCoinNamesByTimeBucket(
                     LocalDateTime.now().minusDays(6), LocalDateTime.now());
             assertTrue(cryptoList.size() == 3);
         } catch (Exception ex) {

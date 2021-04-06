@@ -1,1 +1,2 @@
-/Users/michaelmaniatis/repos/reddivestor-api/src/test/java/com/reddivestor/reddivestorapi/ReddivestorApiApplicationTests.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/test/java/com/reddivestor/reddivestorapi/web/controller/TestCryptoCountsController.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/test/java/com/reddivestor/reddivestorapi/service/TestCryptoCountsCRUDService.java

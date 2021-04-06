@@ -31,24 +31,16 @@ public class TestCryptoCountsController {
 
     @Test
     public void testGetByTimeRangeHappyPath() throws Exception {
-        Date in = new Date();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-        Date dateOne = Date.from(localDateTime.minusDays(6).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateTwo = Date.from(localDateTime.minusDays(4).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateThree = Date.from(localDateTime.minusDays(3).atZone(ZoneId.systemDefault()).toInstant());
         List<Crypto> mockCryptoList = Arrays.asList(
                 new Crypto("blabla crypto",
-                        "blaname",
-                        "blasubreddit",
-                        dateOne),
+                        3,
+                        1),
                 new Crypto("blabla crypto2",
-                        "blaname2",
-                        "blasubreddit2",
-                        dateTwo),
+                        2,
+                        2),
                 new Crypto("blabla crypto3",
-                        "blaname3",
-                        "blasubreddit4",
-                        dateThree)
+                        1,
+                        3)
         );
         when(mockTimeBucketCRUDService.getByTimeBucket(any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(mockCryptoList);
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
@@ -60,24 +52,16 @@ public class TestCryptoCountsController {
     }
     @Test
     public void testGetByTimeRangeBadLowerBound() throws Exception{
-        Date in = new Date();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-        Date dateOne = Date.from(localDateTime.minusDays(6).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateTwo = Date.from(localDateTime.minusDays(4).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateThree = Date.from(localDateTime.minusDays(3).atZone(ZoneId.systemDefault()).toInstant());
         List<Crypto> mockCryptoList = Arrays.asList(
                 new Crypto("blabla crypto",
-                        "blaname",
-                        "blasubreddit",
-                        dateOne),
+                        3,
+                        1),
                 new Crypto("blabla crypto2",
-                        "blaname2",
-                        "blasubreddit2",
-                        dateTwo),
+                        2,
+                        2),
                 new Crypto("blabla crypto3",
-                        "blaname3",
-                        "blasubreddit4",
-                        dateThree)
+                        1,
+                        3)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
                 .getByTimeRangeUTC("03/2/33333", LocalDateTime.now().minusDays(5).toString());
@@ -90,24 +74,16 @@ public class TestCryptoCountsController {
     }
     @Test
     public void testGetByTimeRangeUpperBound() throws Exception{
-        Date in = new Date();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-        Date dateOne = Date.from(localDateTime.minusDays(6).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateTwo = Date.from(localDateTime.minusDays(4).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateThree = Date.from(localDateTime.minusDays(3).atZone(ZoneId.systemDefault()).toInstant());
         List<Crypto> mockCryptoList = Arrays.asList(
                 new Crypto("blabla crypto",
-                        "blaname",
-                        "blasubreddit",
-                        dateOne),
+                        3,
+                        1),
                 new Crypto("blabla crypto2",
-                        "blaname2",
-                        "blasubreddit2",
-                        dateTwo),
+                        2,
+                        2),
                 new Crypto("blabla crypto3",
-                        "blaname3",
-                        "blasubreddit4",
-                        dateThree)
+                        1,
+                        3)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
                 .getByTimeRangeUTC(LocalDateTime.now().minusDays(5).toString(), "03/2/33333");
@@ -120,24 +96,16 @@ public class TestCryptoCountsController {
     }
     @Test
     public void testGetByTimeRangeNullLowerBound() throws Exception{
-        Date in = new Date();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-        Date dateOne = Date.from(localDateTime.minusDays(6).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateTwo = Date.from(localDateTime.minusDays(4).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateThree = Date.from(localDateTime.minusDays(3).atZone(ZoneId.systemDefault()).toInstant());
         List<Crypto> mockCryptoList = Arrays.asList(
                 new Crypto("blabla crypto",
-                        "blaname",
-                        "blasubreddit",
-                        dateOne),
+                        3,
+                        1),
                 new Crypto("blabla crypto2",
-                        "blaname2",
-                        "blasubreddit2",
-                        dateTwo),
+                        2,
+                        2),
                 new Crypto("blabla crypto3",
-                        "blaname3",
-                        "blasubreddit4",
-                        dateThree)
+                        1,
+                        3)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
                 .getByTimeRangeUTC(null, LocalDateTime.now().minusDays(5).toString());
@@ -148,24 +116,16 @@ public class TestCryptoCountsController {
     }
     @Test
     public void testGetByTimeRangeNullUpperBound() throws Exception{
-        Date in = new Date();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-        Date dateOne = Date.from(localDateTime.minusDays(6).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateTwo = Date.from(localDateTime.minusDays(4).atZone(ZoneId.systemDefault()).toInstant());
-        Date dateThree = Date.from(localDateTime.minusDays(3).atZone(ZoneId.systemDefault()).toInstant());
         List<Crypto> mockCryptoList = Arrays.asList(
                 new Crypto("blabla crypto",
-                        "blaname",
-                        "blasubreddit",
-                        dateOne),
+                        3,
+                        1),
                 new Crypto("blabla crypto2",
-                        "blaname2",
-                        "blasubreddit2",
-                        dateTwo),
+                        2,
+                        2),
                 new Crypto("blabla crypto3",
-                        "blaname3",
-                        "blasubreddit4",
-                        dateThree)
+                        1,
+                        3)
         );
         CryptoCountsResponse cryptoCountsResponse = cryptoCountsController
                 .getByTimeRangeUTC(LocalDateTime.now().minusDays(5).toString(), null);

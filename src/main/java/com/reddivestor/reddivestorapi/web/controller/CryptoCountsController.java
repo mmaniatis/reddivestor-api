@@ -39,7 +39,7 @@ public class CryptoCountsController {
 
     @RequestMapping("/cryptocounts/getlasthour")
     @Description("Returns the last hour of coin names sorted by frequency.")
-    public List<String> getLastHour() {
+    public List<Crypto> getLastHour() {
         try {
             LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.HOURS), ZoneOffset.UTC);
             LocalDateTime dateEnd = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
@@ -51,7 +51,7 @@ public class CryptoCountsController {
 
     @RequestMapping("/cryptocounts/getlastday")
     @Description("Returns the last day of coin names sorted by frequency.")
-    private List<String> getLastDay() {
+    private List<Crypto> getLastDay() {
         try {
             LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.DAYS), ZoneOffset.UTC);
             LocalDateTime dateEnd = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
