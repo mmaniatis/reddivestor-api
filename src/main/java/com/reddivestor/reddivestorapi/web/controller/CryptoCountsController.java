@@ -63,27 +63,24 @@ public class CryptoCountsController {
 
     @RequestMapping("/cryptocounts/getlastweek")
     private List<Crypto> getLastWeek() {
-
-        return null;
-    }
-
-    @RequestMapping("/cryptocounts/getlastthreeweeks")
-    private List<Crypto> getLastThreeWeeks() {
-        return null;
+        try {
+            LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.WEEKS), ZoneOffset.UTC);
+            LocalDateTime dateEnd = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
+            return timeBucketCRUDService.getTopCoinNamesByTimeBucket(dateStart,dateEnd);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @RequestMapping("/cryptocounts/getlastmonth")
     private List<Crypto> getLastMonth() {
-        return null;
+        try {
+            LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.WEEKS), ZoneOffset.UTC);
+            LocalDateTime dateEnd = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
+            return timeBucketCRUDService.getTopCoinNamesByTimeBucket(dateStart,dateEnd);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
-    @RequestMapping("/cryptocounts/getlastthreemonths")
-    private List<Crypto> getLastThreeMonths() {
-        return null;
-    }
-
-    @RequestMapping("/cryptocounts/getlastyear")
-    private List<Crypto> getLastYear() {
-        return null;
-    }
 }
