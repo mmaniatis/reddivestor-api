@@ -1,6 +1,5 @@
 package com.reddivestor.reddivestorapi.web.controller;
 
-import com.google.gson.Gson;
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.service.cryptocounts.TimeBucketCRUDService;
 import com.reddivestor.reddivestorapi.web.responses.CryptoCountsResponse;
@@ -17,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin
 public class CryptoCountsController {
     final TimeBucketCRUDService<Crypto> timeBucketCRUDService;
 
@@ -75,7 +73,7 @@ public class CryptoCountsController {
     @RequestMapping("/cryptocounts/getlastmonth")
     private List<Crypto> getLastMonth() {
         try {
-            LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.WEEKS), ZoneOffset.UTC);
+            LocalDateTime dateStart = LocalDateTime.ofInstant(Instant.now().minus(1, ChronoUnit.MONTHS), ZoneOffset.UTC);
             LocalDateTime dateEnd = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
             return timeBucketCRUDService.getTopCoinNamesByTimeBucket(dateStart,dateEnd);
         } catch (Exception e) {
