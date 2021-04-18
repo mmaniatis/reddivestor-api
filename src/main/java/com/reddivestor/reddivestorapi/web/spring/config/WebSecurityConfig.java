@@ -15,12 +15,12 @@ import org.springframework.web.cors.CorsConfiguration;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
-                  .and()
-//                .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+        http
+                .csrf().disable()
+                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
+                .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/**").permitAll()
+//                .antMatchers(HttpMethod.GET, "/**").permitAll()
                 .anyRequest().authenticated();
     }
 }

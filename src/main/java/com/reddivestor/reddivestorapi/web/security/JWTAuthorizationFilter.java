@@ -20,6 +20,12 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
     private final String PREFIX = "Bearer ";
     private final String SECRET = "mySecretKey";
 
+    private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse response) {
+        String authenticationHeader = request.getHeader(HEADER);
+        if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX))
+            return false;
+        return true;
+    }
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         try {
@@ -30,9 +36,11 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                 } else {
                     SecurityContextHolder.clearContext();
                 }
-            }else {
+            }
+            else {
                 SecurityContextHolder.clearContext();
             }
+
             chain.doFilter(request, response);
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -43,28 +51,28 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
     private Claims validateToken(HttpServletRequest request) {
         String jwtToken = request.getHeader(HEADER).replace(PREFIX, "");
-        return Jwts.parser().setSigningKey(SECRET.getBytes()).parseClaimsJws(jwtToken).getBody();
+        try {
+            Claims result = Jwts
+                    .parser()
+                    .setSigningKey(SECRET.getBytes())
+                    .parseClaimsJws(jwtToken).getBody();
+            return result;
+        } catch (Exception e){
+            throw e;
+        }
+
     }
 
-    /**
-     * Authentication method in Spring flow
-     *
-     * @param claims
-     */
     private void setUpSpringAuthentication(Claims claims) {
-        @SuppressWarnings("unchecked")
         List<String> authorities = (List) claims.get("authorities");
 
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(claims.getSubject(), null,
                 authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+
+//        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken("Reddivestor-API", null, Arrays.asList(new SimpleGrantedAuthority("User")));
+
         SecurityContextHolder.getContext().setAuthentication(auth);
 
     }
 
-    private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse res) {
-        String authenticationHeader = request.getHeader(HEADER);
-        if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX))
-            return false;
-        return true;
-    }
 }
