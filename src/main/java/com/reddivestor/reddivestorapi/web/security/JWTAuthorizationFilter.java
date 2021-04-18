@@ -20,12 +20,14 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
     private final String PREFIX = "Bearer ";
     private final String SECRET = "mySecretKey";
 
-    private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse response) {
-        String authenticationHeader = request.getHeader(HEADER);
-        if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX))
-            return false;
-        return true;
-    }
+
+    /*
+
+        04/17 - Token is working. NEed to make authorities a list or change functionality itself. Unsure what I will do at this time,
+
+        But passing this jwt token is only way to make requests. Once this is done i will push to AWS via docker elastic beanstalk.
+
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         try {
@@ -47,6 +49,13 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, e.getMessage());
             return;
         }
+    }
+
+    private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse response) {
+        String authenticationHeader = request.getHeader(HEADER);
+        if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX))
+            return false;
+        return true;
     }
 
     private Claims validateToken(HttpServletRequest request) {
@@ -72,7 +81,29 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 //        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken("Reddivestor-API", null, Arrays.asList(new SimpleGrantedAuthority("User")));
 
         SecurityContextHolder.getContext().setAuthentication(auth);
-
     }
+
+    /* TODO: Implement this code:
+    	private String getJWTToken(String username) {
+		String secretKey = "mySecretKey";
+		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+				.commaSeparatedStringToAuthorityList("ROLE_USER");
+
+		String token = Jwts
+				.builder()
+				.setId("softtekJWT")
+				.setSubject(username)
+				.claim("authorities",
+						grantedAuthorities.stream()
+								.map(GrantedAuthority::getAuthority)
+								.collect(Collectors.toList()))
+				.setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + 600000))
+				.signWith(SignatureAlgorithm.HS512,
+						secretKey.getBytes()).compact();
+
+		return "Bearer " + token;
+	}
+     */
 
 }
