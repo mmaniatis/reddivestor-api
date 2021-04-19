@@ -25,13 +25,6 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
     private final String PREFIX = "Bearer ";
     private final String JWT_SIGNING_KEY;
 
-    /*
-
-        04/17 - Token is working. NEed to make authorities a list or change functionality itself. Unsure what I will do at this time,
-
-        But passing this jwt token is only way to make requests. Once this is done i will push to AWS via docker elastic beanstalk.
-
-     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         try {
