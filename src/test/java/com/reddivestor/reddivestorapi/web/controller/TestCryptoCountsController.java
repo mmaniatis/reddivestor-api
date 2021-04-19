@@ -3,9 +3,13 @@ package com.reddivestor.reddivestorapi.web.controller;
 import com.reddivestor.reddivestorapi.models.Crypto;
 import com.reddivestor.reddivestorapi.service.cryptocounts.TimeBucketCRUDService;
 import com.reddivestor.reddivestorapi.web.responses.CryptoCountsResponse;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
@@ -13,6 +17,7 @@ import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -134,6 +139,5 @@ public class TestCryptoCountsController {
         assertTrue(cryptoCountsResponse.httpStatus == HttpStatus.BAD_REQUEST);
         assertTrue(StringUtils.hasText(cryptoCountsResponse.exception));
     }
-
 
 }

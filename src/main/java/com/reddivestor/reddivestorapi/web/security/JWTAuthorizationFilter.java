@@ -1,6 +1,9 @@
 package com.reddivestor.reddivestorapi.web.security;
 
 import io.jsonwebtoken.Jwts;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.ToString;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,11 +18,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import io.jsonwebtoken.Claims;
 
+@Builder
+@ToString
 public class JWTAuthorizationFilter extends OncePerRequestFilter {
     private final String HEADER = "Authorization";
     private final String PREFIX = "Bearer ";
-    private final String SECRET = "mySecretKey";
-
+    private final String JWT_SIGNING_KEY;
 
     /*
 
@@ -63,7 +67,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         try {
             Claims result = Jwts
                     .parser()
-                    .setSigningKey(SECRET.getBytes())
+                    .setSigningKey(JWT_SIGNING_KEY.getBytes())
                     .parseClaimsJws(jwtToken).getBody();
             return result;
         } catch (Exception e){
@@ -77,33 +81,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(claims.getSubject(), null,
                 authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
-
-//        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken("Reddivestor-API", null, Arrays.asList(new SimpleGrantedAuthority("User")));
-
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
-
-    /* TODO: Implement this code:
-    	private String getJWTToken(String username) {
-		String secretKey = "mySecretKey";
-		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-				.commaSeparatedStringToAuthorityList("ROLE_USER");
-
-		String token = Jwts
-				.builder()
-				.setId("softtekJWT")
-				.setSubject(username)
-				.claim("authorities",
-						grantedAuthorities.stream()
-								.map(GrantedAuthority::getAuthority)
-								.collect(Collectors.toList()))
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 600000))
-				.signWith(SignatureAlgorithm.HS512,
-						secretKey.getBytes()).compact();
-
-		return "Bearer " + token;
-	}
-     */
 
 }

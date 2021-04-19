@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 @EnableConfigurationProperties
 @Configuration
 public class MongoConfig {
-    //TODO: Map these to yaml file.
+
     @Value("${reddivestorapi.mongodb.username}")
     String username;
 
