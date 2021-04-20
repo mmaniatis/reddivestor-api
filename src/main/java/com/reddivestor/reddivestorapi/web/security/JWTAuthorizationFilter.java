@@ -33,10 +33,12 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                 if (claims.get("authorities") != null) {
                     setUpSpringAuthentication(claims);
                 } else {
+                    System.out.println("authorities was null, rejecting request.");
                     SecurityContextHolder.clearContext();
                 }
             }
             else {
+                System.out.println("Token was not a JWT token.");
                 SecurityContextHolder.clearContext();
             }
 
@@ -64,6 +66,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                     .parseClaimsJws(jwtToken).getBody();
             return result;
         } catch (Exception e){
+            System.out.println("Exception in validateToken !! Exception="+e.toString());
             throw e;
         }
 
