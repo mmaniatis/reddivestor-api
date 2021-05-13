@@ -1,0 +1,10 @@
+reddivestorapi:
+  mongodb:
+    username: ${MONGO_USERNAME}
+    password: ${MONGO_PASSWORD}
+    database: main
+  jwt:
+    signingKey: ${JWT_PRIVATE_KEY}
+
+server:
+  port: 8080

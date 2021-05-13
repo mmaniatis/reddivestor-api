@@ -1,0 +1,13 @@
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/web/spring/config/WebConfig.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/models/Crypto.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/persist/mongo/MongoReadWriteDatastore.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/service/cryptocounts/CryptoTimeBucketCRUDService.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/persist/spring/config/MongoConfig.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/web/responses/CryptoCountsResponse.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/web/security/JWTAuthorizationFilter.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/web/spring/config/WebSecurityConfig.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/persist/ReadWriteDatastore.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/service/spring/config/CryptoCountsConfig.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/web/controller/CryptoCountsController.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/service/cryptocounts/TimeBucketCRUDService.java
+/Users/michaelmaniatis/repos/reddivestor-api/src/main/java/com/reddivestor/reddivestorapi/ReddivestorApiApplication.java
